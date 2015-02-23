@@ -18,10 +18,12 @@
     "duo": "^0.8.5"
   },
   "devDependencies": {
-    "duo-coffee-script": "0.0.2"
+    "duo-coffee-script": "0.0.2",
+    "mocha": "^2.1.0",
+    "should": "^5.0.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "licenses": [
     {
