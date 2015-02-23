@@ -14,8 +14,10 @@
     "duojs"
   ],
   "dependencies": {
+    "duo": "^0.8.5",
+    "gulp-util": "^3.0.3",
     "map-stream": "^0.1.0",
-    "duo": "^0.8.5"
+    "through2": "^0.6.3"
   },
   "devDependencies": {
     "duo-coffee-script": "0.0.2",

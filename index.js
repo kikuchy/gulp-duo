@@ -1,5 +1,8 @@
-var map = require('map-stream');
+var through2 = require('through2');
+var gutil = require('gulp-util');
 var Duo = require('duo');
+
+var PluginError = gutil.PluginError;
 
 module.exports = function() {
   var plugins = [].slice.call(arguments);
@@ -20,7 +23,15 @@ module.exports = function() {
   }
 
   return function() {
-    return map(function(file, cb) {
+    return through2.obj(function(file, encode, cb) {
+      if (file.isNull()) {
+        return cb(undefined, file);
+      }
+
+      if (file.isStream()) {
+        return cb(new PluginError('gulp-duo', 'Streaming not supported'));
+      }
+
       var duo = Duo(file.base).entry(file.path);
 
       setOptions(duo, opts);
@@ -31,7 +42,7 @@ module.exports = function() {
 
       return duo.run(function(err, src) {
           if (err) return cb(err, null);
-          file.contents = new Buffer(src, 'utf8');
+          file.contents = new Buffer(src, encode);
           return cb(null, file);
       });
     });
