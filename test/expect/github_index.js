@@ -83,13 +83,13 @@
    return require;
 })({
 1: [function(require, module, exports) {
-var uid = require('matthewmueller/uid');
-var fmt = require('yields/fmt');
+var uid = require('matthewmueller/uid@0.0.2');
+var fmt = require('yields/fmt@0.1.0');
 
 var msg = fmt('Your unique ID is %s!', uid());
 window.alert(msg);
 
-}, {"matthewmueller/uid":2,"yields/fmt":3}],
+}, {"matthewmueller/uid@0.0.2":2,"yields/fmt@0.1.0":3}],
 2: [function(require, module, exports) {
 /**
  * Export `uid`
